@@ -19,12 +19,20 @@ const juegoSchema = new mongoose.Schema({
     },
     portada:{
         type: String,
-        required: true,
+        required: false,
     },
     calificacion:{
         type: Number,
         default: 0,
     },
+    // Referencia al usuario propietario del juego
+    usuario: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Usuario",
+        required: true,
+    },
+}, {
+    timestamps: true, // Agrega createdAt y updatedAt
 });
 
 const Juego = mongoose.model("Juego", juegoSchema);
